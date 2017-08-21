@@ -1,0 +1,312 @@
+<html>
+	<head>
+		<title>BIG3</title>
+		<link href="BIG3.css" type="text/css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	</head>
+<body ng-app="myApp" id="jaunt">	
+	<div ng-controller="buttons">
+		<table id="header">
+			<tr>
+				<th>
+					<div id="drive">
+						<div id="title">:D R I V E</div>
+						<div id="userBro2">{{userBro}}</div>
+					</div>
+				</th>
+			</tr>
+			<tr >	
+				<td >
+					<span >
+					<input class ="butt" type="button" ng-class="{'btn-warning': benchButton}" ng-click="changeBench()" onclick="refreshBench()" value="BENCH"> ---
+					<input class ="butt" type="button" ng-class="{'btn-warning': squatButton}" ng-click="changeSquat()" onclick="refreshSquat()" value="SQUAT"> ---
+					<input class ="butt" type="button" ng-class="{'btn-warning': deadButton}" ng-click="changeDead()" onclick="refreshDead()" value="DEADLIFT">
+					<span>
+				</td>
+			</tr>
+			<tr>
+				<td id="points">LEVEL <span class="sick"> {{xlevel}}</span> : <span class="sick">{{xcurrent}}</span> / <span class="sick">{{xtotal}}</span> GAINS</td>
+			</tr>
+		</table>
+
+		<div id="myProgress">
+  			<div id="myBar" ng-style="{width : progress};"></div>
+		</div>
+		
+		<div class="tabs" >
+		
+
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-5" name="tab-group-1">
+			    <label class="tab-label" for="tab-5">Stats</label>
+
+			    <div class="tab-panel" id="table-wrapper">
+					<div class="tab-content">
+						<table class="stats">
+							<tr>
+								<th></th>
+								<th>{{exercise}}</th>
+								<th>Totals</th>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<th>Gains</th>
+								<td>{{sgains}}</td>	
+								<td>{{xgains}}</td>	
+							</tr>
+							<tr>
+								<th>Records</th>
+								<td>{{srecords}}</td>
+								<td>{{xrecords}}</td>	
+							</tr>
+							<tr>
+								<th>Challenges</th>
+								<td>{{schallenges}}</td>
+								<td>{{xchallenges}}</td>
+							</tr>
+							<tr>
+								<th>Sets</th>
+								<td>{{ssets}}</td>
+								<td>{{xsets}}</td>
+							</tr>
+							<tr>
+								<th>Reps</th>
+								<td>{{sreps}}</td>
+								<td>{{xreps}}</td>
+							</tr>
+							<tr>
+								<th>Pounds</th>
+								<td>{{sweight}}</td>
+								<td>{{xweight}}</td>
+							</tr>
+							<tr>
+								<th>1RM</th>
+								<td>{{soneRM}}</td>
+								<td>{{xoneRM}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-6" name="tab-group-1" checked>
+			    <label class="tab-label" for="tab-6">Set</label>
+
+			    <div class="tab-panel" id="table-wrapper">
+					<div class="tab-content">
+						<table id="setbet" >
+							<tr>
+								<td>					
+									<span id="response2"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span id="response3"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span id="response4"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span id="response">{{exercise}} {{weight}} x {{reps}}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Weight: <input class="numbox" id="weight" type="text" value="100" ng-model="weight"></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Reps: <input class="numbox" id="reps" type="text" value="10" ng-model="reps"></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="button" class="butt" onclick="addSet();" ng-click="refresh();changeTotals()" value="Add">			
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-1" name="tab-group-1">
+			    <label class="tab-label" for="tab-1">History</label>
+
+			    <div class="tab-panel" >
+					<div class="tab-content" >
+					<span class="label">Ordered By: {{orderByField}}, Reverse Sort: {{reverseSort}}</span><br>
+						<div class="scrollingtable" >
+							<div>
+								<div>
+									<table class="history">
+										<thead>
+											<tr>
+												<th>
+													<a href="#" ng-click="orderByField='date'; reverseSort = !reverseSort">
+				        							Date <span ng-show="orderByField == 'date'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+				          							</a>
+				          						</th>
+												<th>
+													<a href="#" ng-click="orderByField='weight'; reverseSort = !reverseSort">
+				        							Weight <span ng-show="orderByField == 'weight'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+				          							</a>
+												</th>
+												<th>
+													<a href="#" ng-click="orderByField='reps'; reverseSort = !reverseSort">
+				        							Reps <span ng-show="orderByField == 'reps'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+				          							</a>
+												</th>
+												<th>
+													<a href="#" ng-click="orderByField='oneRM'; reverseSort = !reverseSort">
+				        							1RM <span ng-show="orderByField == 'oneRM'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+				          							</a>
+												</th>
+												<th>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="x in hist|orderBy:orderByField:reverseSort track by $index">
+												<td>{{x.date}}</td>
+												<td>{{x.weight}}</td>
+												<td>{{x.reps}}</td>
+												<td>{{x.oneRM}}</td>
+												<td>
+													<input type="button" value="X" class="remove" ng-click="removeRow(x.set)"/>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>					
+						</div>
+						<br>
+						<div class="fart" id="work"></div>					
+					</div>
+				</div>
+			</div>
+
+
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-2" name="tab-group-1">
+			    <label class="tab-label" for="tab-2">Stacks</label>
+
+			    <div class="tab-panel" id="table-wrapper">
+					<div class="tab-content">
+						<span class="label">Ordered By: {{orderByField2}}, Reverse Sort: {{reverseSort2}}</span><br>	
+						<div>
+							<div>
+								<table class="cable">
+									<tr>
+										<th>Reps</th>
+										<th>Weight</th>
+										<th>1RM</th>
+										<th>Records</th>
+									</tr>
+									<tr ng-repeat="x in stack|orderBy:orderByField2:reverseSort2" ng-class="{red: x.records == 0, green: x.records > 0, silver: x.records == 4, gold: x.records > 4}">
+										<td style="font-weight:bold">{{x.reps}}</td>
+										<td >{{x.weight}}</td>
+										<td >{{x.oneRM}}</td>
+										<td >{{x.records}}</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="fart" id="stackwork"></div>	
+					</div>
+				</div>
+			</div>
+
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-3" name="tab-group-1">
+			    <label class="tab-label" for="tab-3">Pumps</label>
+
+			    <div class="tab-panel" id="table-wrapper">
+					<div class="tab-content">
+						<span class="label">Ordered By: {{orderByField3}}, Reverse Sort: {{reverseSort2}}</span><br>
+						<table class="cable">
+							<tr>
+								<th>Weight</th>
+								<th>Reps</th>
+								<th>1RM</th>
+								<th>Records</th>
+							</tr>
+							<tr ng-repeat="x in pump|orderBy:orderByField3:reverseSort2" ng-class="{red: x.records == 0, green: x.records > 0, silver: x.records == 4, gold: x.records > 4}">
+								<td style="font-weight:bold">{{x.weight}}</td>
+								<td >{{x.reps}}</td>
+								<td >{{x.oneRM}}</td>
+								<td >{{x.records}}</td>
+							</tr>
+						</table>
+						<div class="fart" id="pumpwork"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab">
+			    <input class="tab-radio" type="radio" id="tab-4" name="tab-group-1">
+			    <label class="tab-label" for="tab-4">Challenges</label>
+
+			    <div class="tab-panel" id="table-wrapper">
+					<div class="tab-content">
+						<span class="label">Ordered By: {{orderByField4}}, Reverse Sort: {{reverseSort2}}</span><br>
+						<table class="cable">
+							<tr>
+								<th>Number</th>
+								<th>Challenge</th>
+								<th>Status</th>
+							</tr>
+							<tr ng-repeat="x in challenge|orderBy:orderByField4:reverseSort2 track by $index" ng-class="{green: x.challenge == 'Complete!!', red: x.challenge != 'Complete!!'}">
+								<td>{{x.num}}</td>
+								<td >{{x.title}}</td>
+								<td >{{x.challenge}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+
+	</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDYVMxGAeOmwc8bGdxhLc-zWIt2oUNJjoo",
+    authDomain: "big3-f86fc.firebaseapp.com",
+    databaseURL: "https://big3-f86fc.firebaseio.com",
+    projectId: "big3-f86fc",
+    storageBucket:  "projectName-ci4w0.appspot.com",
+    messagingSenderId: "535399439866"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="variables.js"></script>
+<script src="sets.js"></script>
+<script src="refresh.js"></script>
+<script src="records.js"></script>
+<script src="challenges.js"></script>
+<script src="stats.js"></script>
+<script src="buttons.js"></script>
+<script src="fusioncharts.js"></script>
+<script src="fusioncharts.charts.js"></script>
+<script src="angular-fusioncharts.min.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.src.js"></script>
+<script src="https://code.highcharts.com/stock/highcharts-more.src.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+</body>
+</html>
+

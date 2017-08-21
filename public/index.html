@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>Login</title>
+		<link href="/css/login2.css" type="text/css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	</head>
+<body ng-app="myApp" id="login">
+	<div ng-controller="homepage">
+		<div id="pic">
+			<img src="/css/Drive.jpg" style="width: 800px; height: 800px">
+		</div>
+		<div id="bros">
+			<input type="button" class="buttons" ng-class="{'btn-change': logButton}" ng-click="changeLog()" value="Login">
+			<input type="button" class="buttons" ng-class="{'btn-change': signButton}" ng-click="changeSign()" value="Sign Up">
+		</div>
+		<table id="header">
+			<tr >
+				<td class="dick"> Username: </td>
+				<td><input id="userBro" class="username" type="text"></td>
+			</tr>
+			<tr>
+				<td class="dick"> Password: </td>
+				<td><input id="passBro" class="username" type="text"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<form onclick="changeUserBro();" ng-submit="checkUser();updateInfo();">
+						<input class="go" type="submit" value="GO!">
+						<div>{{actionURL}}</div>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div id="message">{{message}}</div>
+				</td>
+			<tr>
+		</table>
+	</div>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDYVMxGAeOmwc8bGdxhLc-zWIt2oUNJjoo",
+    authDomain: "big3-f86fc.firebaseapp.com",
+    databaseURL: "https://big3-f86fc.firebaseio.com",
+    projectId: "big3-f86fc",
+    storageBucket: "",
+    messagingSenderId: "535399439866"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="/scripts/login3.js"></script>
+</body>
+</html>

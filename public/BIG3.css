@@ -1,0 +1,311 @@
+.btn-warning {
+	background-color: red;
+	color: White;
+}
+
+.tabs {
+  font-size: 0;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.tabs:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.tabs .tab {
+  display: inline;
+}
+
+.tabs .tab-label {
+  background: #eee; 
+  border: 1px solid #ccc; 
+  display: inline-block;
+  font-size: 52px;
+  left: 1px;
+  margin-left: -1px;
+  padding: 10px; 
+  position: relative;
+  vertical-align: bottom;
+}
+
+.tabs .tab > [type="radio"] {
+  clip: rect(0 0 0 0);
+  height: 1px;
+  opacity: 0;
+  position: fixed;
+  width: 1px;
+  z-index: -1;
+}
+
+.tabs .tab-panel {
+  display: inline;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  height: 0;
+  width: 0;
+}
+
+.tabs .tab-content {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  background: white;
+  padding: 0 20px;
+  float: left;
+  font-size: 16px;
+  font-size: 1rem;
+  margin-top: -1px;
+  width: 100%;
+  background-color: black;
+}
+
+.tabs .tab [type="radio"]:checked + .tab-label {
+  background: red;
+  color: white;
+  border-bottom-width: 0;
+  padding-bottom: 11px;
+  z-index: 1;
+}
+
+.tabs .tab [type="radio"]:checked ~ .tab-panel {
+  display: inline;
+}
+.cable {
+	float: left;
+  width: 100%;
+  font-size: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-collapse: collapse;
+}
+.cable, td, th {
+	
+  padding: 5px;
+}
+
+.cable th {
+  color: white;
+}
+
+.green {
+	background-color: LightGreen;
+}
+
+.red {
+	background-color: LightCoral;
+}
+
+.even {
+	background-color: white;
+}
+
+.odd {
+	background-color: LightBlue;
+}
+
+.white {
+	background-color: white;
+}
+
+.gold {
+	background-color: gold;
+}
+
+.silver {
+	background-color: silver;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+  border: 1px solid black;
+}
+
+#myBar {
+	width: 20%;
+	height: 70px;
+	background-color: red;
+	border: 1px solid black;
+}
+
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:150px;
+  overflow:auto;  
+  margin-top:20px;
+  padding-bottom:20px;
+}
+
+#table-wrapper table thead th .text {
+  position:absolute;   
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:35%;
+  border:1px solid red;
+}
+
+.scrollingtable {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  width: auto; /*if you want a fixed width, set it here, else set to auto*/
+  min-width: 0/*100%*/; /*if you want a % width, set it here, else set to 0*/
+  height: 700px/*100%*/; /*set table height here; can be fixed value or %*/
+  min-height: 0/*104px*/; /*if using % height, make this large enough to fit scrollbar arrows + caption + thead*/
+
+}
+
+.scrollingtable > div > div {
+  min-height: 0/*43px*/; /*if using % height, make this large enough to fit scrollbar arrows*/
+  max-height: 100%;
+  overflow: scroll/*auto*/; /*set to auto if using fixed or % width; else scroll*/
+  overflow-x: hidden;
+  border: 1px solid black; /*border around table body*/
+}
+
+#bigboi {
+	font-size: 150px;
+	font-family: sans-serif;
+  font-weight: bolder;
+  color: white;
+}
+
+#points {
+	padding: 0;
+	font-weight: bold;
+	font-size: 60px;
+	margin: 0;
+	border: none;
+	border-collapse: collapse;
+	font-family: Impact;
+  color: white;
+}
+#header{
+  width: 100%;
+}
+#header td{
+	border: none;
+	border-collapse: collapse;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.butt {
+	width: 30%;
+	height: 100px;
+  font-size: 50px;
+}
+
+.sick{
+  color:red;
+}
+
+.three{
+  color:red;
+  font-size: 200px;
+  font-family: sans-serif;
+  font-weight: bolder;
+}
+
+.stuff{
+  text-align: center;
+  width: 100%;
+}
+
+#jaunt{
+  background-color: black;
+}
+
+.fart {
+  width: 100%;;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+#drive {
+  color: white;
+  font-size: 100px;
+  font-family: Gadget, sans-serif;
+  font-style: bold;
+}
+
+#setbet {
+  background-color: black;
+  color: white;
+  font-size: 100px;
+  width: 100%;
+  height: 60%;
+  text-align: center;
+  border: none !important;
+}
+
+#setbet td, th{
+  padding: 0;
+}
+
+.numbox {
+  height: 100px;
+  width: 300px;
+  font-size: 80px;
+}
+
+#stackwork {
+  width: 100%;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-right: 0;
+}
+
+.butt2 {
+  width: 20%;
+  height: 3%;
+  font-size: 30px;
+}
+
+.stats {
+  color: white;
+  font-size: 80px;
+  width: 100%;
+  text-align: left;
+  margin-top: 40px;
+  border-collapse: separate;
+  border-spacing: 15px 0;
+}
+
+.history {
+  color: white;
+  font-size: 50px;
+  width: 100%;
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: 50px 0;
+}
+
+.history a {
+  color: white;
+}
+
+.remove {
+  font-size: 50px;
+  color: white;
+  background-color: red;
+  width: 70px;
+}
+
+#title{
+  float: left;
+}
+
+#userBro2{
+  float: right;
+}
